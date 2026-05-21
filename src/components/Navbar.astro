@@ -1,0 +1,164 @@
+---
+import { Menu, X } from "@lucide/astro";
+
+const links = [
+  { label: "Chi sono", href: "#chi-sono" },
+  { label: "Servizi", href: "#servizi" },
+  { label: "Approccio", href: "#approccio" },
+  { label: "Contatti", href: "#contatti" },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
+>
+  <div
+    class="container flex h-16 items-center justify-between md:h-20"
+  >
+    <!-- Logo / Name -->
+    <a href="#top" class="flex flex-col leading-tight">
+      <span
+        class="font-display text-xl font-medium md:text-2xl"
+        style="color: var(--color-slate-deep);"
+      >
+        Veronica Di Biagio
+      </span>
+      <span
+        class="font-ui text-xs uppercase tracking-widest"
+        style="color: var(--color-sage);"
+      >
+        Psicologa · Psicoterapeuta
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="font-ui text-sm font-medium transition-colors duration-200 hover:text-primary"
+            style="color: var(--color-slate-deep);"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+
+      <a
+        href="#contatti"
+        class="nav-cta btn-press rounded-full px-5 py-2 font-ui text-sm font-medium transition-all duration-200"
+      >
+        Prenota un colloquio
+      </a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="p-2 md:hidden"
+      type="button"
+      aria-label="Menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <Menu
+        id="menu-icon-open"
+        size={22}
+        style="color: var(--color-slate-deep);"
+      />
+      <X
+        id="menu-icon-close"
+        size={22}
+        class="hidden"
+        style="color: var(--color-slate-deep);"
+      />
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-gray-100 bg-white/98 px-6 py-6 backdrop-blur-sm md:hidden"
+  >
+    <div class="flex flex-col gap-5">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="font-ui text-base font-medium text-left"
+            style="color: var(--color-slate-deep);"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+
+      <a
+        href="#contatti"
+        class="btn-press w-full rounded-full px-5 py-3 font-ui text-sm font-medium text-white"
+      >
+        Prenota un colloquio
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector("#site-header");
+  const toggle = document.querySelector("#menu-toggle");
+  const mobileMenu = document.querySelector("#mobile-menu");
+  const iconOpen = document.querySelector("#menu-icon-open");
+  const iconClose = document.querySelector("#menu-icon-close");
+
+  const onScroll = () => {
+    if (window.scrollY > 40) {
+      header?.classList.add(
+        "is-scrolled",
+        "bg-white/95",
+        "backdrop-blur-sm",
+        "shadow-sm",
+      );
+      header?.classList.remove("bg-transparent");
+    } else {
+      header?.classList.remove(
+        "is-scrolled",
+        "bg-white/95",
+        "backdrop-blur-sm",
+        "shadow-sm",
+      );
+      header?.classList.add("bg-transparent");
+    }
+  };
+
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu?.classList.toggle("hidden");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+  });
+</script>
+
+<style >
+  .nav-cta {
+    background-color: var(--color-sage, #7a9b84);
+    color: white;
+    border: 1px solid var(--color-sage, #7a9b84);
+  }
+
+  #site-header.is-scrolled .nav-cta {
+    background-color: transparent;
+    color: var(--color-sage, #7a9b84);
+    border: 1px solid var(--color-sage, #7a9b84);
+  }
+
+  #site-header.is-scrolled .nav-cta:hover {
+    background-color: var(--color-sage, #7a9b84);
+    color: white;
+  }
+</style>

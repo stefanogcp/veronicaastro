@@ -1,0 +1,84 @@
+---
+const approachItems = [
+  {
+    num: "01",
+    title: "La persona al centro",
+    text: "La mia attività professionale mira a mettere la persona al 'centro' del suo percorso di crescita, non fornendo soluzioni ma supportandola nella ricerca della propria soluzione.",
+  },
+  {
+    num: "02",
+    title: "Cambiare significa agire",
+    text: "Il cambiamento richiede un lavoro concreto quotidiano. Il nostro obiettivo non è ottenere un risultato ma mettere in atto un processo ogni giorno, trasformandolo in abitudine.",
+  },
+  {
+    num: "03",
+    title: "Dare corpo alla mente",
+    text: "La mente è fondamentalmente incorporata nel corpo. L'intervento psicologico non può prescindere dal coinvolgimento del corpo come mezzo attraverso cui generare le condizioni per star bene.",
+  },
+  {
+    num: "04",
+    title: "Un approccio integrato",
+    text: "Integro metodi della psicoterapia cognitivo-comportamentale con tecniche di mindfulness e interventi sul corpo, per un percorso personalizzato e completo.",
+  },
+];
+---
+
+<section
+  id="approccio"
+  class="py-20 md:py-32"
+  style={{ backgroundColor: "#FAFAF8" }}
+>
+  <div class="container">
+    <div class="fade-up mb-14 md:mb-20">
+      <span
+        class="font-ui text-xs tracking-widest uppercase mb-4 block"
+        style={{ color: "var(--color-sage)" }}
+      >
+        Il mio approccio
+      </span>
+      <h2
+        class="font-display text-4xl md:text-5xl leading-tight max-w-xl"
+        style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
+      >
+        Promuovere il benessere:{" "}
+        <em class="italic">passi verso l'autonomia</em>
+      </h2>
+      <span class="section-divider"></span>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+      {
+        approachItems.map((item, i) => (
+          <div
+            class="fade-up flex gap-6 p-6 rounded-xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
+            style={{ borderColor: "var(--color-border)" }}
+            data-delay={i * 80}
+          >
+            <span
+              class="font-display text-4xl font-light flex-shrink-0 leading-none mt-1"
+              style={{ color: "var(--color-sage-light)" }}
+            >
+              {item.num}
+            </span>
+
+            <div>
+              <h3
+                class="font-display text-xl mb-2"
+                style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
+              >
+                {item.title}
+              </h3>
+
+              <p
+                class="font-normal text-sm leading-relaxed"
+                style={{ color: "var(--color-muted-foreground)" }}
+              >
+                {item.text}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

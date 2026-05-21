@@ -1,0 +1,167 @@
+---
+import {
+  Brain,
+  Heart,
+  Sparkles,
+  Phone,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+  ChevronDown,
+  ArrowRight,
+  Quote,
+} from "@lucide/astro";
+
+const SERVICE_CONSULTATION = "/images/service.webp";
+
+const SERVICE_WELLNESS = "/images/wellness.webp";
+
+const services = [
+  {
+    icon: Brain,
+    title: "Consulenza Psicologica",
+    subtitle: "Individuale, di coppia e online",
+    description:
+      "Un aiuto professionale per affrontare momenti di difficoltà personale, superare crisi, gestire eventi critici e promuovere il benessere psicofisico. Utile per disturbi d'ansia, dell'umore, difficoltà relazionali e di coppia.",
+    image: SERVICE_CONSULTATION,
+    tags: ["Individuale", "Di coppia", "Online"],
+  },
+  {
+    icon: Heart,
+    title: "Benessere Psicofisico",
+    subtitle: "Mente e corpo in equilibrio",
+    description:
+      "Sviluppare risorse personali in un'ottica integrata mente-corpo. Ti senti stressato o sovraccaricato? Impara a gestire lo stress e migliora la qualità della vita attraverso un percorso personalizzato.",
+    image: SERVICE_WELLNESS,
+    tags: ["Gestione stress", "Mindfulness", "Psicosomatica"],
+  },
+  {
+    icon: Sparkles,
+    title: "Programma AttivaMente",
+    subtitle: "Allenamento cognitivo",
+    description:
+      "Hai problemi di memoria e concentrazione? Vuoi prevenire gli effetti dell'invecchiamento mentale? Allena la mente e mantienila attiva più a lungo attraverso esercizi mirati e scientificamente validati.",
+    image: null,
+    tags: ["Memoria", "Concentrazione", "Prevenzione"],
+  },
+];
+---
+
+<section
+  id="servizi"
+  class="py-20 md:py-32"
+  style={{ backgroundColor: "var(--color-cream)" }}
+>
+  <div class="container">
+    <div class="fade-up mb-14 md:mb-20">
+      <span
+        class="font-ui text-xs tracking-widest uppercase mb-4 block"
+        style={{ color: "var(--color-sage)" }}
+      >
+        I miei servizi
+      </span>
+      <h2
+        class="font-display text-4xl md:text-5xl leading-tight max-w-xl"
+        style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
+      >
+        Servizi per la salute e il{" "}
+        <em class="italic">benessere psicofisico</em>
+      </h2>
+      <span class="section-divider"></span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        services.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <div
+              class="fade-up group bg-white rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(122,158,126,0.18)] hover:border-[var(--color-sage)]"
+              style={{
+                borderColor: "var(--color-border)",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+              }}
+              data-delay={i * 100}
+            >
+              {s.image ? (
+                <div class="h-48 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              ) : (
+                <div
+                  class="h-48 flex items-center justify-center"
+                  style={{ backgroundColor: "var(--color-sage-light)" }}
+                >
+                  <Icon
+                    size={56}
+                    style={{ color: "var(--color-sage-dark)" }}
+                    stroke-width={1}
+                  />
+                </div>
+              )}
+
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div
+                    class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: "var(--color-sage-light)" }}
+                  >
+                    <Icon
+                      size={16}
+                      style={{ color: "var(--color-sage-dark)" }}
+                    />
+                  </div>
+
+                  <div>
+                    <h3
+                      class="font-display text-xl leading-tight"
+                      style={{
+                        color: "var(--color-slate-deep)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {s.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <p
+                  class="font-ui text-xs tracking-widest uppercase mb-3"
+                  style={{ color: "var(--color-sage)" }}
+                >
+                  {s.subtitle}
+                </p>
+
+                <p
+                  class="font-body text-sm leading-relaxed mb-4"
+                  style={{ color: "var(--color-muted-foreground)" }}
+                >
+                  {s.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {s.tags.map((tag) => (
+                    <span
+                      class="font-ui text-xs px-3 py-1 rounded-full"
+                      style={{
+                        backgroundColor: "var(--color-sage-light)",
+                        color: "var(--color-sage-dark)",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

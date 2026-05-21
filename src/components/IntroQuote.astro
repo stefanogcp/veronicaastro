@@ -1,0 +1,30 @@
+---
+import { Quote } from "@lucide/astro";
+---
+
+<section class="py-20 md:py-28" style={{ backgroundColor: "var(--color-cream)" }}>
+      <div class="container">
+        <div class="fade-up max-w-3xl mx-auto text-center">
+          <Quote
+            size={32}
+            class="mx-auto mb-6"
+            style={{ color: "var(--color-sage)" }}
+          />
+          <blockquote
+            class="font-display text-3xl md:text-4xl leading-snug mb-6"
+            style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
+          >
+            <em>
+              "Sappiamo ciò che siamo, ma non sappiamo ciò che potremmo
+              essere."
+            </em>
+          </blockquote>
+          <cite
+            class="font-ui text-sm tracking-widest uppercase not-italic"
+            style={{ color: "var(--color-sage)" }}
+          >
+            W. Shakespeare — Amleto
+          </cite>
+        </div>
+      </div>
+    </section>

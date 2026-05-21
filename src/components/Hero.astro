@@ -1,0 +1,98 @@
+---
+const HERO_BG = "/images/hero_bg.webp";
+
+import { ArrowRight, ChevronDown } from "@lucide/astro";
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+  {/* Background image */}
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: `url(${HERO_BG})` }}
+  >
+  </div>
+  {/* Overlay */}
+  <div
+    class="absolute inset-0"
+    style={{
+      background:
+        "linear-gradient(105deg, rgba(28,43,58,0.72) 0%, rgba(28,43,58,0.38) 55%, rgba(28,43,58,0.12) 100%)",
+    }}
+  >
+  </div>
+
+  <div class="container relative z-10 pt-24 pb-16">
+    <div class="max-w-2xl">
+      {/* Eyebrow */}
+      <div class="flex items-center gap-3 mb-6">
+        <span
+          class="block w-8 h-px"
+          style={{ backgroundColor: "var(--color-sage-light)" }}></span>
+        <span
+          class="font-ui text-xs tracking-widest uppercase"
+          style={{ color: "var(--color-sage-light)" }}
+        >
+          Psicologa · Psicoterapeuta · Roma &amp; Online
+        </span>
+      </div>
+
+      {/* Heading */}
+      <h1
+        class="font-display text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-6"
+        style={{ fontWeight: 300 }}
+      >
+        Ciao,{" "}
+        <em class="italic" style={{ color: "var(--color-sage-light)" }}>
+          come stai?
+        </em>
+      </h1>
+
+      <p
+        class="font-body text-lg md:text-xl text-white/85 leading-relaxed mb-10 max-w-lg"
+      >
+        Una domanda tutt'altro che banale. Rispondere significa aprire una
+        finestra sul proprio mondo interno. Quando la risposta è difficile, un
+        aiuto professionale può trasformare gli ostacoli in possibilità di
+        crescita.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="#contatti"
+          class="btn-press font-ui font-medium px-8 py-4 rounded-full text-white text-sm tracking-wide transition-all duration-200 hover:opacity-90 flex items-center gap-2 justify-center"
+          style={{ backgroundColor: "var(--color-sage)" }}
+        >
+          Prenota un colloquio
+          <ArrowRight size={16} />
+        </a>
+        <a
+          href="#servizi"
+          class="btn-press font-ui font-medium px-8 py-4 rounded-full text-white text-sm tracking-wide border border-white/40 hover:bg-white/10 transition-all duration-200"
+        >
+          Scopri i servizi
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll indicator */}
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60"
+  >
+    <span class="font-ui text-xs tracking-widest uppercase"> Scorri </span>
+    <ChevronDown size={18} class="animate-bounce" />
+  </div>
+</section>
+
+<script>
+  const serviziBtn = document.getElementById("scroll-servizi");
+  const collBtn = document.getElementById("prenota-colloquio");
+
+  serviziBtn?.addEventListener("click", () => {
+    document.querySelector("#servizi")?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  collBtn?.addEventListener("click", () => {
+    document.querySelector("#contatti")?.scrollIntoView({ behavior: "smooth" });
+  });
+</script>
