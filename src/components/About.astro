@@ -1,6 +1,6 @@
 ---
 const ABOUT_PORTRAIT = "/images/profile.jpg";
-
+import { Image } from 'astro:assets';
 import { ArrowRight } from "@lucide/astro";
 ---
 
@@ -23,6 +23,7 @@ import { ArrowRight } from "@lucide/astro";
           alt="Dott.ssa Veronica Di Biagio"
           class="relative rounded-2xl w-full object-cover shadow-xl"
           style={{ maxHeight: "560px" }}
+          loading="eager"
         />
         {/* Credential badge */}
         <div

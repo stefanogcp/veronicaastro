@@ -13,8 +13,9 @@ const links = [
   id="site-header"
   class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
 >
+  <!-- Sostituito "container" con il wrapper moderno + padding di sicurezza ai lati -->
   <div
-    class="container flex h-16 items-center justify-between md:h-20"
+    class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between md:h-20"
   >
     <!-- Logo / Name -->
     <a href="#top" class="flex flex-col leading-tight">
@@ -95,9 +96,10 @@ const links = [
         ))
       }
 
+      <!-- Corretto il pulsante mobile: mancavano le classi dello sfondo che avevi nello style -->
       <a
         href="#contatti"
-        class="btn-press w-full rounded-full px-5 py-3 font-ui text-sm font-medium text-white"
+        class="nav-cta btn-press w-full text-center rounded-full px-5 py-3 font-ui text-sm font-medium text-white"
       >
         Prenota un colloquio
       </a>

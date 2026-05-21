@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+@layer components {
+  /* Puoi chiamarla .container per ripristinare la vecchia abitudine, 
+     oppure .wrapper per evitare conflitti logici */
+  .container {
+    @apply w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
 
 :root {
   --font-display: "Cormorant Garamond", Georgia, serif;
@@ -47,26 +54,23 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.01em;
 }
 
-.container {
+/* 2. LA RETE DI SICUREZZA PER IL CONTAINER (Sintassi corretta per v4) */
+@utility container {
+  margin-inline: auto;
+  max-width: var(--breakpoint-2xl); /* Blocca a 1536px per i monitor grandi */
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-inline: 1rem; /* px-4 di base per mobile */
 }
 
+/* Usiamo il CSS nativo fuori da @utility per i breakpoint */
 @media (min-width: 640px) {
   .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-inline: 1.5rem; /* sm:px-6 */
   }
 }
-
 @media (min-width: 1024px) {
   .container {
-    max-width: 1280px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-inline: 2rem; /* lg:px-8 */
   }
 }
 
