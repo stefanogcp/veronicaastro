@@ -15,17 +15,17 @@
 
   --color-gold: oklch(0.72 0.12 75);
   --color-gold-dark: oklch(0.55 0.14 75);
-  --color-slate-deep: oklch(0.22 0.02 240);
+  --color-slate-deep: oklch(0.22 0.02 220);
   --color-cream: oklch(0.98 0.01 85);
   --color-warm-white: oklch(0.99 0.005 85);
 
   /* Colori di sistema */
   --color-background: oklch(0.985 0.005 85);
   --color-foreground: oklch(0.22 0.02 240);
-  --color-muted-foreground: oklch(0.45 0.02 240); /* AGGIUNGI QUESTA RIGA */
+  --color-muted-foreground: oklch(0.45 0.02 220); /* AGGIUNGI QUESTA RIGA */
   --color-border: oklch(0.9 0.01 85);
   --color-input: oklch(0.93 0.008 85);
-  --color-ring: oklch(0.62 0.08 145);
+  --color-ring: oklch(0.62 0.08 200);
 
   /* Radius */
   --radius: 0.5rem;

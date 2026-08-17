@@ -1,5 +1,5 @@
 ---
-import { Brain, Heart, Sparkles } from "@lucide/astro";
+import { Brain, Heart, Sparkles, ArrowRight } from "@lucide/astro";
 
 const SERVICE_CONSULTATION = "/images/service.webp";
 const SERVICE_WELLNESS = "/images/wellness.webp";
@@ -13,6 +13,7 @@ const services = [
       "Un aiuto professionale per affrontare momenti di difficoltà personale, superare crisi, gestire eventi critici e promuovere il benessere psicofisico. Utile per disturbi d'ansia, dell'umore, difficoltà relazionali e di coppia.",
     image: SERVICE_CONSULTATION,
     tags: ["Individuale", "Di coppia", "Online"],
+    href: "/servizi/consulenza-psicologica", // <-- AGGIUNTO IL LINK
   },
   {
     icon: Heart,
@@ -22,6 +23,7 @@ const services = [
       "Sviluppare risorse personali in un'ottica integrata mente-corpo. Ti senti stressato o sovraccaricato? Impara a gestire lo stress e migliora la qualità della vita attraverso un percorso personalizzato.",
     image: SERVICE_WELLNESS,
     tags: ["Gestione stress", "Mindfulness", "Psicosomatica"],
+    href: "/servizi/benessere-psicofisico", // <-- AGGIUNTO IL LINK
   },
   {
     icon: Sparkles,
@@ -31,6 +33,7 @@ const services = [
       "Hai problemi di memoria e concentrazione? Vuoi prevenire gli effetti dell'invecchiamento mentale? Allena la mente e mantienila attiva più a lungo attraverso esercizi mirati e scientificamente validati.",
     image: null,
     tags: ["Memoria", "Concentrazione", "Prevenzione"],
+    href: "/servizi/attivamente", // <-- AGGIUNTO IL LINK
   },
 ];
 ---
@@ -52,12 +55,14 @@ const services = [
         services.map((s, i) => {
           const Icon = s.icon;
           return (
-            <div
-              class="fade-up group bg-white rounded-2xl overflow-hidden border border-border shadow-[0_1px_4px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(122,158,126,0.18)] hover:border-sage"
+            <!-- 1. CAMBIATO 'block' in 'flex flex-col h-full' per far allungare le card tutte uguali -->
+            <a
+              href={s.href}
+              class="flex flex-col h-full fade-up group bg-white rounded-2xl overflow-hidden border border-border shadow-[0_1px_4px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(122,158,126,0.18)] hover:border-sage"
               data-delay={i * 100}
             >
               {s.image ? (
-                <div class="h-48 overflow-hidden">
+                <div class="h-48 overflow-hidden shrink-0">
                   <img
                     src={s.image}
                     alt={s.title}
@@ -65,7 +70,7 @@ const services = [
                   />
                 </div>
               ) : (
-                <div class="h-48 flex items-center justify-center bg-sage-light">
+                <div class="h-48 flex items-center justify-center bg-sage-light shrink-0">
                   <Icon
                     size={56}
                     class="text-sage-dark"
@@ -74,7 +79,8 @@ const services = [
                 </div>
               )}
 
-              <div class="p-6">
+              <!-- 2. AGGIUNTO 'flex flex-col flex-grow' al contenitore interno -->
+              <div class="p-6 flex flex-col flex-grow">
                 <div class="flex items-center gap-3 mb-3">
                   <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-sage-light">
                     <Icon
@@ -98,15 +104,19 @@ const services = [
                   {s.description}
                 </p>
 
-                <div class="flex flex-wrap gap-2">
+                <!-- 3. AGGIUNTO 'mt-auto' AI TAG PER SPINGERLI SEMPRE IN FONDO -->
+                <div class="flex flex-wrap gap-2 mt-auto">
                   {s.tags.map((tag) => (
                     <span class="font-ui text-xs px-3 py-1 rounded-full bg-sage-light text-sage-dark">
                       {tag}
                     </span>
                   ))}
+                  <div class="ml-auto w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center bg-sage-light text-sage-dark opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-50 group-hover:translate-x-0">
+                    <ArrowRight size={16} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           );
         })
       }
