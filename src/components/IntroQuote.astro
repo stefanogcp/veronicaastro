@@ -2,29 +2,22 @@
 import { Quote } from "@lucide/astro";
 ---
 
-<section class="py-20 md:py-28" style={{ backgroundColor: "var(--color-cream)" }}>
-      <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up max-w-3xl mx-auto text-center">
-          <Quote
-            size={32}
-            class="mx-auto mb-6"
-            style={{ color: "var(--color-sage)" }}
-          />
-          <blockquote
-            class="font-display text-3xl md:text-4xl leading-snug mb-6"
-            style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
-          >
-            <em>
-              "Sappiamo ciò che siamo, ma non sappiamo ciò che potremmo
-              essere."
-            </em>
-          </blockquote>
-          <cite
-            class="font-ui text-sm tracking-widest uppercase not-italic"
-            style={{ color: "var(--color-sage)" }}
-          >
-            W. Shakespeare — Amleto
-          </cite>
-        </div>
-      </div>
-    </section>
+<section class="py-20 md:py-28 bg-cream">
+  <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="fade-up max-w-3xl mx-auto text-center text-sage">
+      
+      <Quote size={32} class="mx-auto mb-6" />
+      
+      <blockquote class="font-display text-3xl md:text-4xl leading-snug mb-6 text-slate-deep font-light">
+        <em>
+          "Sappiamo ciò che siamo, ma non sappiamo ciò che potremmo essere."
+        </em>
+      </blockquote>
+      
+      <cite class="font-ui text-sm tracking-widest uppercase not-italic text-sage">
+        W. Shakespeare — Amleto
+      </cite>
+      
+    </div>
+  </div>
+</section>

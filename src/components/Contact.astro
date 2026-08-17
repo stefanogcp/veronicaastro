@@ -1,38 +1,15 @@
 ---
-import {
-  Brain,
-  Heart,
-  Sparkles,
-  Phone,
-  Mail,
-  MapPin,
-  Menu,
-  X,
-  ChevronDown,
-  ArrowRight,
-  Quote,
-} from "@lucide/astro";
+import { Phone, Mail, MapPin } from "@lucide/astro";
 ---
 
-<section
-  id="contatti"
-  class="py-20 md:py-32"
-  style={{ backgroundColor: "var(--color-cream)" }}
->
+<section id="contatti" class="py-20 md:py-32 bg-cream">
   <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="fade-up mb-14 md:mb-20">
-      <span
-        class="font-ui text-xs tracking-widest uppercase mb-4 block"
-        style={{ color: "var(--color-sage)" }}
-      >
+      <span class="font-ui text-xs tracking-widest uppercase mb-4 block text-sage">
         Contatti
       </span>
-      <h2
-        class="font-display text-4xl md:text-5xl leading-tight"
-        style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
-      >
-        Iniziamo{" "}
-        <em class="italic">insieme</em>
+      <h2 class="font-display text-4xl md:text-5xl leading-tight font-light text-slate-deep">
+        Iniziamo <em class="italic">insieme</em>
       </h2>
       <span class="section-divider"></span>
     </div>
@@ -40,31 +17,16 @@ import {
     <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
       {/* Form */}
       <div class="fade-up">
-        <div
-          class="rounded-2xl p-10 border"
-          style={{
-            backgroundColor: "white",
-            borderColor: "var(--color-border)",
-          }}
-        >
-          <p
-            class="font-ui text-xs tracking-widest uppercase mb-3"
-            style={{ color: "var(--color-sage)" }}
-          >
+        <div class="rounded-2xl p-10 border bg-white border-border">
+          <p class="font-ui text-xs tracking-widest uppercase mb-3 text-sage">
             Modulo contatti
           </p>
 
-          <h3
-            class="font-display text-2xl mb-3"
-            style={{ color: "var(--color-slate-deep)", fontWeight: 400 }}
-          >
+          <h3 class="font-display text-2xl mb-3 font-normal text-slate-deep">
             Sezione in aggiornamento
           </h3>
 
-          <p
-            class="font-body text-sm leading-relaxed"
-            style={{ color: "var(--color-muted-foreground)" }}
-          >
+          <p class="font-body text-sm leading-relaxed text-muted-foreground">
             Il modulo di contatto verrà reinserito a breve. Per ora puoi
             contattarmi tramite telefono o email usando i riferimenti qui
             accanto.
@@ -75,81 +37,48 @@ import {
       {/* Contact info */}
       <div class="fade-up space-y-8">
         <div>
-          <h3
-            class="font-display text-2xl mb-6"
-            style={{ color: "var(--color-slate-deep)", fontWeight: 400 }}
-          >
+          <h3 class="font-display text-2xl mb-6 font-normal text-slate-deep">
             Vuoi fissare un primo colloquio conoscitivo?
           </h3>
 
           <div class="space-y-5">
             <a href="tel:0674789171" class="flex items-center gap-4 group">
-              <div
-                class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: "var(--color-sage-light)" }}
-              >
-                <Phone size={18} style={{ color: "var(--color-sage-dark)" }} />
+              <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 bg-sage-light">
+                <Phone size={18} class="text-sage-dark" />
               </div>
               <div>
-                <p
-                  class="font-ui text-xs tracking-widest uppercase"
-                  style={{ color: "var(--color-sage)" }}
-                >
+                <p class="font-ui text-xs tracking-widest uppercase text-sage">
                   Studio
                 </p>
-                <p
-                  class="font-body font-medium group-hover:underline"
-                  style={{ color: "var(--color-slate-deep)" }}
-                >
+                <p class="font-body font-medium group-hover:underline text-slate-deep">
                   06 74789171
                 </p>
               </div>
             </a>
 
             <a href="tel:3297220788" class="flex items-center gap-4 group">
-              <div
-                class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: "var(--color-sage-light)" }}
-              >
-                <Phone size={18} style={{ color: "var(--color-sage-dark)" }} />
+              <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 bg-sage-light">
+                <Phone size={18} class="text-sage-dark" />
               </div>
               <div>
-                <p
-                  class="font-ui text-xs tracking-widest uppercase"
-                  style={{ color: "var(--color-sage)" }}
-                >
+                <p class="font-ui text-xs tracking-widest uppercase text-sage">
                   Mobile
                 </p>
-                <p
-                  class="font-body font-medium group-hover:underline"
-                  style={{ color: "var(--color-slate-deep)" }}
-                >
+                <p class="font-body font-medium group-hover:underline text-slate-deep">
                   329 7220788
                 </p>
               </div>
             </a>
 
-            <a
-              href="mailto:info@veronicadibiagio.it"
-              class="flex items-center gap-4 group"
-            >
-              <div
-                class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: "var(--color-sage-light)" }}
-              >
-                <Mail size={18} style={{ color: "var(--color-sage-dark)" }} />
+            <a href="mailto:info@veronicadibiagio.it" class="flex items-center gap-4 group">
+              <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 bg-sage-light">
+                <Mail size={18} class="text-sage-dark" />
               </div>
               <div>
-                <p
-                  class="font-ui text-xs tracking-widest uppercase"
-                  style={{ color: "var(--color-sage)" }}
-                >
+                <p class="font-ui text-xs tracking-widest uppercase text-sage">
                   Email
                 </p>
-                <p
-                  class="font-body font-medium group-hover:underline"
-                  style={{ color: "var(--color-slate-deep)" }}
-                >
+                <p class="font-body font-medium group-hover:underline text-slate-deep">
                   info@veronicadibiagio.it
                 </p>
               </div>
@@ -158,59 +87,36 @@ import {
         </div>
 
         {/* Studios */}
-        <div
-          class="border-t pt-8"
-          style={{ borderColor: "var(--color-border)" }}
-        >
-          <h4
-            class="font-display text-xl mb-5"
-            style={{ color: "var(--color-slate-deep)", fontWeight: 400 }}
-          >
+        <div class="border-t pt-8 border-border">
+          <h4 class="font-display text-xl mb-5 font-normal text-slate-deep">
             Dove sono
           </h4>
           <div class="space-y-5">
             <div class="flex gap-4">
-              <div
-                class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                style={{ backgroundColor: "var(--color-sage-light)" }}
-              >
-                <MapPin size={18} style={{ color: "var(--color-sage-dark)" }} />
+              <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-sage-light">
+                <MapPin size={18} class="text-sage-dark" />
               </div>
               <div>
-                <p
-                  class="font-ui text-xs tracking-widest uppercase mb-1"
-                  style={{ color: "var(--color-sage)" }}
-                >
+                <p class="font-ui text-xs tracking-widest uppercase mb-1 text-sage">
                   Studio Medico Fusciardi
                 </p>
-                <p
-                  class="font-body text-sm"
-                  style={{ color: "var(--color-slate-deep)" }}
-                >
+                <p class="font-body text-sm text-slate-deep">
                   Via Pietro Bonfanti, 52
                   <br />
                   00175 Roma
                 </p>
               </div>
             </div>
+            
             <div class="flex gap-4">
-              <div
-                class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                style={{ backgroundColor: "var(--color-sage-light)" }}
-              >
-                <MapPin size={18} style={{ color: "var(--color-sage-dark)" }} />
+              <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-sage-light">
+                <MapPin size={18} class="text-sage-dark" />
               </div>
               <div>
-                <p
-                  class="font-ui text-xs tracking-widest uppercase mb-1"
-                  style={{ color: "var(--color-sage)" }}
-                >
+                <p class="font-ui text-xs tracking-widest uppercase mb-1 text-sage">
                   Studio di Psicoterapia Gamba-Sportiello
                 </p>
-                <p
-                  class="font-body text-sm"
-                  style={{ color: "var(--color-slate-deep)" }}
-                >
+                <p class="font-body text-sm text-slate-deep">
                   Via Riccardo Grazioli Lante, 76
                   <br />
                   00195 Roma
@@ -221,23 +127,11 @@ import {
         </div>
 
         {/* Online note */}
-        <div
-          class="rounded-xl p-5 border"
-          style={{
-            backgroundColor: "var(--color-sage-light)",
-            borderColor: "var(--color-sage)",
-          }}
-        >
-          <p
-            class="font-ui text-xs tracking-widest uppercase mb-2"
-            style={{ color: "var(--color-sage-dark)" }}
-          >
+        <div class="rounded-xl p-5 border bg-sage-light border-sage">
+          <p class="font-ui text-xs tracking-widest uppercase mb-2 text-sage-dark">
             Consulenza online disponibile
           </p>
-          <p
-            class="font-body text-sm"
-            style={{ color: "var(--color-slate-deep)" }}
-          >
+          <p class="font-body text-sm text-slate-deep">
             Vuoi richiedere una consulenza online? Contattami per scoprire come
             funziona e fissare un appuntamento in videochiamata.
           </p>

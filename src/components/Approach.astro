@@ -23,23 +23,13 @@ const approachItems = [
 ];
 ---
 
-<section
-  id="approccio"
-  class="py-20 md:py-32"
-  style={{ backgroundColor: "#FAFAF8" }}
->
+<section id="approccio" class="py-20 md:py-32 bg-[#FAFAF8]">
   <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="fade-up mb-14 md:mb-20">
-      <span
-        class="font-ui text-xs tracking-widest uppercase mb-4 block"
-        style={{ color: "var(--color-sage)" }}
-      >
+      <span class="font-ui text-xs tracking-widest uppercase mb-4 block text-sage">
         Il mio approccio
       </span>
-      <h2
-        class="font-display text-4xl md:text-5xl leading-tight max-w-xl"
-        style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
-      >
+      <h2 class="font-display text-4xl md:text-5xl leading-tight max-w-xl text-slate-deep font-light">
         Promuovere il benessere:{" "}
         <em class="italic">passi verso l'autonomia</em>
       </h2>
@@ -50,29 +40,19 @@ const approachItems = [
       {
         approachItems.map((item, i) => (
           <div
-            class="fade-up flex gap-6 p-6 rounded-xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
-            style={{ borderColor: "var(--color-border)" }}
+            class="fade-up flex gap-6 p-6 rounded-xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03)] border border-border"
             data-delay={i * 80}
           >
-            <span
-              class="font-display text-4xl font-light flex-shrink-0 leading-none mt-1"
-              style={{ color: "var(--color-sage-light)" }}
-            >
+            <span class="font-display text-4xl font-light flex-shrink-0 leading-none mt-1 text-sage-light">
               {item.num}
             </span>
 
             <div>
-              <h3
-                class="font-display text-xl mb-2"
-                style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
-              >
+              <h3 class="font-display text-xl mb-2 text-slate-deep font-light">
                 {item.title}
               </h3>
 
-              <p
-                class="font-normal text-sm leading-relaxed"
-                style={{ color: "var(--color-muted-foreground)" }}
-              >
+              <p class="font-normal text-sm leading-relaxed text-muted-foreground">
                 {item.text}
               </p>
             </div>

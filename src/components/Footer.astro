@@ -1,38 +1,30 @@
- <footer
-      class="py-10 border-t"
-      style={{
-        backgroundColor: "var(--color-slate-deep)",
-        borderColor: "rgba(255,255,255,0.08)",
-      }}
-    >
-      <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <p
-            class="font-display text-lg text-white"
-            style={{ fontWeight: 300 }}
-          >
-            Dott.ssa Veronica Di Biagio
-          </p>
-          <p
-            class="font-ui text-xs tracking-widest uppercase mt-1"
-            style={{ color: "var(--color-sage-light)" }}
-          >
-            Psicologa · Psicoterapeuta · Roma &amp; Online
-          </p>
-        </div>
-        <div
-          class="flex gap-6 font-ui text-xs"
-          style={{ color: "rgba(255,255,255,0.5)" }}
-        >
-          <span>Ordine Psicologi del Lazio n. 16130</span>
-          <a
-            href="https://www.veronicadibiagio.it/j/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-white transition-colors"
-          >
-            Privacy
-          </a>
-        </div>
-      </div>
-    </footer>
+<footer class="py-10 border-t bg-slate-deep border-white/10">
+  <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    
+    <div>
+      <!-- Aggiunto font-light al posto del fontWeight 300 -->
+      <p class="font-display text-lg text-white font-light">
+        Dott.ssa Veronica Di Biagio
+      </p>
+      
+      <!-- Sostituito lo style inline con text-sage-light -->
+      <p class="font-ui text-xs tracking-widest uppercase mt-1 text-sage-light">
+        Psicologa · Psicoterapeuta · Roma &amp; Online
+      </p>
+    </div>
+    
+    <!-- Sostituito il colore RGBA con text-white/50 -->
+    <div class="flex gap-6 font-ui text-xs text-white/50">
+      <span>Ordine Psicologi del Lazio n. 16130</span>
+      <a
+        href="https://www.veronicadibiagio.it/j/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-white transition-colors"
+      >
+        Privacy
+      </a>
+    </div>
+    
+  </div>
+</footer>

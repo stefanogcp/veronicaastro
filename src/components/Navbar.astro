@@ -1,11 +1,21 @@
 ---
-import { Menu, X } from "@lucide/astro";
+import { Menu, X, ChevronDown } from "@lucide/astro";
 
+// Struttura dei link aggiornata per supportare il sottomenu e i percorsi assoluti
 const links = [
-  { label: "Chi sono", href: "#chi-sono" },
-  { label: "Servizi", href: "#servizi" },
-  { label: "Approccio", href: "#approccio" },
-  { label: "Contatti", href: "#contatti" },
+  { label: "Chi sono", href: "/#chi-sono" },
+  { label: "Approccio", href: "/#approccio" }, // Ora punta alla pagina dedicata
+  { 
+    label: "Servizi", 
+    href: "/#servizi",
+    // Se è presente subLinks, il componente genererà il menu a tendina
+    subLinks: [
+      { label: "Consulenza Psicologica", href: "/servizi/consulenza-psicologica" },
+      { label: "Benessere Psicofisico", href: "/servizi/benessere-psicofisico" },
+      { label: "Programma Attivamente", href: "/servizi/attivamente" }
+    ]
+  },
+  { label: "Contatti", href: "/#contatti" },
 ];
 ---
 
@@ -13,22 +23,14 @@ const links = [
   id="site-header"
   class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
 >
-  <!-- Sostituito "container" con il wrapper moderno + padding di sicurezza ai lati -->
-  <div
-    class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between md:h-20"
-  >
+  <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between md:h-20">
+    
     <!-- Logo / Name -->
-    <a href="#top" class="flex flex-col leading-tight">
-      <span
-        class="font-display text-xl font-medium md:text-2xl"
-        style="color: var(--color-slate-deep);"
-      >
+    <a href="/#top" class="flex flex-col leading-tight">
+      <span class="font-display text-xl font-medium md:text-2xl" style="color: var(--color-slate-deep);">
         Veronica Di Biagio
       </span>
-      <span
-        class="font-ui text-xs uppercase tracking-widest"
-        style="color: var(--color-sage);"
-      >
+      <span class="font-ui text-xs uppercase tracking-widest" style="color: var(--color-sage);">
         Psicologa · Psicoterapeuta
       </span>
     </a>
@@ -37,18 +39,48 @@ const links = [
     <nav class="hidden md:flex items-center gap-8">
       {
         links.map((l) => (
-          <a
-            href={l.href}
-            class="font-ui text-sm font-medium transition-colors duration-200 hover:text-primary"
-            style="color: var(--color-slate-deep);"
-          >
-            {l.label}
-          </a>
+          l.subLinks ? (
+            // DROPDOWN DESKTOP (Hover)
+            <div class="relative group">
+              <a
+                href={l.href}
+                class="flex items-center gap-1 font-ui text-sm font-medium transition-colors duration-200 hover:text-primary py-2"
+                style="color: var(--color-slate-deep);"
+              >
+                {l.label}
+                <ChevronDown size={16} class="transition-transform duration-200 group-hover:-rotate-180" />
+              </a>
+              
+              <!-- Sottomenu Desktop -->
+              <div class="absolute left-0 top-full mt-1 w-56 rounded-xl bg-white shadow-lg border border-gray-100 opacity-0 invisible translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                <div class="py-2 flex flex-col">
+                  {l.subLinks.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class="px-5 py-2.5 font-ui text-sm font-medium hover:bg-gray-50 transition-colors"
+                      style="color: var(--color-slate-deep);"
+                    >
+                      {sub.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            // LINK SEMPLICE DESKTOP
+            <a
+              href={l.href}
+              class="font-ui text-sm font-medium transition-colors duration-200 hover:text-primary"
+              style="color: var(--color-slate-deep);"
+            >
+              {l.label}
+            </a>
+          )
         ))
       }
 
       <a
-        href="#contatti"
+        href="/#contatti"
         class="nav-cta btn-press rounded-full px-5 py-2 font-ui text-sm font-medium transition-all duration-200"
       >
         Prenota un colloquio
@@ -64,89 +96,135 @@ const links = [
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <Menu
-        id="menu-icon-open"
-        size={22}
-        style="color: var(--color-slate-deep);"
-      />
-      <X
-        id="menu-icon-close"
-        size={22}
-        class="hidden"
-        style="color: var(--color-slate-deep);"
-      />
+      <Menu id="menu-icon-open" size={22} style="color: var(--color-slate-deep);" />
+      <X id="menu-icon-close" size={22} class="hidden" style="color: var(--color-slate-deep);" />
     </button>
   </div>
 
   <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="hidden border-t border-gray-100 bg-white/98 px-6 py-6 backdrop-blur-sm md:hidden"
+    class="hidden border-t border-gray-100 bg-white/98 px-6 py-6 backdrop-blur-sm md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
   >
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-4">
       {
         links.map((l) => (
-          <a
-            href={l.href}
-            class="font-ui text-base font-medium text-left"
-            style="color: var(--color-slate-deep);"
-          >
-            {l.label}
-          </a>
+          l.subLinks ? (
+            // DROPDOWN MOBILE (Click)
+            <div class="flex flex-col">
+              <button
+                class="mobile-dropdown-btn flex items-center justify-between w-full text-left font-ui text-base font-medium py-2"
+                style="color: var(--color-slate-deep);"
+              >
+                {l.label}
+                <ChevronDown size={20} class="mobile-dropdown-icon transition-transform duration-200" />
+              </button>
+              
+              <!-- Sottomenu Mobile (Inizialmente nascosto) -->
+              <div class="mobile-dropdown-content hidden flex-col pl-4 mt-2 space-y-3 border-l-2 border-gray-100">
+                {l.subLinks.map((sub) => (
+                  <a
+                    href={sub.href}
+                    class="font-ui text-sm font-medium block"
+                    style="color: var(--color-slate-deep);"
+                  >
+                    {sub.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            // LINK SEMPLICE MOBILE
+            <a
+              href={l.href}
+              class="font-ui text-base font-medium text-left py-2"
+              style="color: var(--color-slate-deep);"
+            >
+              {l.label}
+            </a>
+          )
         ))
       }
 
-      <!-- Corretto il pulsante mobile: mancavano le classi dello sfondo che avevi nello style -->
-      <a
-        href="#contatti"
-        class="nav-cta btn-press w-full text-center rounded-full px-5 py-3 font-ui text-sm font-medium text-white"
-      >
-        Prenota un colloquio
-      </a>
+      <div class="mt-4 pt-4 border-t border-gray-100">
+        <a
+          href="/#contatti"
+          class="nav-cta btn-press block w-full text-center rounded-full px-5 py-3 font-ui text-sm font-medium text-white"
+        >
+          Prenota un colloquio
+        </a>
+      </div>
     </div>
   </div>
 </header>
 
 <script>
-  const header = document.querySelector("#site-header");
-  const toggle = document.querySelector("#menu-toggle");
-  const mobileMenu = document.querySelector("#mobile-menu");
-  const iconOpen = document.querySelector("#menu-icon-open");
-  const iconClose = document.querySelector("#menu-icon-close");
+  // Script ottimizzato per essere eseguito in Astro Client-Side
+  const setupHeader = () => {
+    const header = document.querySelector("#site-header");
+    const toggle = document.querySelector("#menu-toggle");
+    const mobileMenu = document.querySelector("#mobile-menu");
+    const iconOpen = document.querySelector("#menu-icon-open");
+    const iconClose = document.querySelector("#menu-icon-close");
 
-  const onScroll = () => {
-    if (window.scrollY > 40) {
-      header?.classList.add(
-        "is-scrolled",
-        "bg-white/95",
-        "backdrop-blur-sm",
-        "shadow-sm",
-      );
-      header?.classList.remove("bg-transparent");
-    } else {
-      header?.classList.remove(
-        "is-scrolled",
-        "bg-white/95",
-        "backdrop-blur-sm",
-        "shadow-sm",
-      );
-      header?.classList.add("bg-transparent");
-    }
+    // Gestione Scroll
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        header?.classList.add("is-scrolled", "bg-white/95", "backdrop-blur-sm", "shadow-sm");
+        header?.classList.remove("bg-transparent");
+      } else {
+        header?.classList.remove("is-scrolled", "bg-white/95", "backdrop-blur-sm", "shadow-sm");
+        header?.classList.add("bg-transparent");
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+
+    // Gestione Toggle Menu Mobile Principale
+    toggle?.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      mobileMenu?.classList.toggle("hidden");
+      iconOpen?.classList.toggle("hidden");
+      iconClose?.classList.toggle("hidden");
+    });
+
+    // Gestione Accordion Servizi (Mobile)
+    const mobileDropdownBtns = document.querySelectorAll(".mobile-dropdown-btn");
+    
+    mobileDropdownBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('.mobile-dropdown-icon');
+        
+        if (content && icon) {
+          content.classList.toggle("hidden");
+          content.classList.toggle("flex");
+          icon.classList.toggle("-rotate-180");
+        }
+      });
+    });
+
+    // Chiusura del menu mobile quando si clicca un link (Migliora la UX)
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        if (!mobileMenu.classList.contains('hidden')) {
+          toggle?.click(); // Simula il click sul pulsante di chiusura
+        }
+      });
+    });
   };
 
-  window.addEventListener("scroll", onScroll);
-  onScroll();
-
-  toggle?.addEventListener("click", () => {
-    const isOpen = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!isOpen));
-    mobileMenu?.classList.toggle("hidden");
-    iconOpen?.classList.toggle("hidden");
-    iconClose?.classList.toggle("hidden");
-  });
+  // Esegui setup all'avvio
+  setupHeader();
+  
+  // Se usi le ViewTransitions di Astro in futuro, ri-esegui lo script al cambio pagina
+  document.addEventListener('astro:after-swap', setupHeader);
 </script>
 
-<style >
+<style>
   .nav-cta {
     background-color: var(--color-sage, #7a9b84);
     color: white;

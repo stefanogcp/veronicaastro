@@ -1,114 +1,71 @@
 ---
-const ABOUT_PORTRAIT = "/images/profile.jpg";
 import { Image } from 'astro:assets';
 import { ArrowRight } from "@lucide/astro";
+
+const ABOUT_PORTRAIT = "/images/profile.jpg";
 ---
 
-<section
-  id="chi-sono"
-  class="py-20 md:py-32"
-  style={{ backgroundColor: "#FAFAF8" }}
->
+<section id="chi-sono" class="py-20 md:py-32 bg-[#FAFAF8]">
+  <!-- Nota: Bravissimo ad aver usato la classe "container" che avevi impostato nel global.css! -->
   <div class="container">
     <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-      {/* Image */}
+      
+      <!-- Image -->
       <div class="fade-up relative order-2 md:order-1">
-        <div
-          class="absolute -top-4 -left-4 w-full h-full rounded-2xl"
-          style={{ backgroundColor: "var(--color-sage-light)" }}
-        >
-        </div>
+        <div class="absolute -top-4 -left-4 w-full h-full rounded-2xl bg-sage-light"></div>
         <img
           src={ABOUT_PORTRAIT}
           alt="Dott.ssa Veronica Di Biagio"
-          class="relative rounded-2xl w-full object-cover shadow-xl"
-          style={{ maxHeight: "560px" }}
+          class="relative rounded-2xl w-full object-cover shadow-xl max-h-[560px]"
           loading="eager"
         />
-        {/* Credential badge */}
-        <div
-          class="absolute -bottom-5 -right-5 bg-white rounded-xl shadow-lg px-5 py-4 border"
-          style={{ borderColor: "var(--color-sage-light)" }}
-        >
-          <p
-            class="font-ui text-xs tracking-widest uppercase mb-1"
-            style={{ color: "var(--color-sage)" }}
-          >
+        
+        <!-- Credential badge -->
+        <!-- Ho rimosso lo style per il bordo e aggiunto border-sage-light -->
+        <div class="absolute -bottom-5 -right-5 bg-white rounded-xl shadow-lg px-5 py-4 border border-sage-light">
+          <p class="font-ui text-xs tracking-widest uppercase mb-1 text-sage">
             Iscritta dal
           </p>
-          <p
-            class="font-display text-2xl font-medium"
-            style={{ color: "var(--color-slate-deep)" }}
-          >
+          <p class="font-display text-2xl font-medium text-slate-deep">
             2008
           </p>
-          <p
-            class="font-ui text-xs"
-            style={{ color: "var(--color-muted-foreground)" }}
-          >
+          <p class="font-ui text-xs text-muted-foreground">
             Ordine Psicologi del Lazio
           </p>
         </div>
       </div>
 
-      {/* Text */}
+      <!-- Text -->
       <div class="fade-up order-1 md:order-2">
-        <span
-          class="font-ui text-xs tracking-widest uppercase mb-4 block"
-          style={{ color: "var(--color-sage)" }}
-        >
+        <span class="font-ui text-xs tracking-widest uppercase mb-4 block text-sage">
           Su di me
         </span>
-        <h2
-          class="font-display text-4xl md:text-5xl leading-tight mb-6"
-          style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
-        >
-          Dott.ssa Veronica{" "}
-          <em class="italic">Di Biagio</em>
+        <!-- Tolto lo style, aggiunto text-slate-deep e font-light -->
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6 text-slate-deep font-light">
+          Dott.ssa Veronica <em class="italic">Di Biagio</em>
         </h2>
         <span class="section-divider"></span>
 
-        <div
-          class="space-y-4 font-body text-base leading-relaxed"
-          style={{ color: "var(--color-slate-deep)" }}
-        >
+        <!-- Spostato text-slate-deep direttamente nel div genitore -->
+        <div class="space-y-4 font-body text-base leading-relaxed text-slate-deep">
           <p>
-            Mi chiamo Veronica Di Biagio, vivo e lavoro a Roma. Sono laureata in <strong
-              >Psicologia clinica e di comunità</strong
-            > e iscritta dal 2008 all'Ordine degli Psicologi del Lazio n. 16130.
+            Mi chiamo Veronica Di Biagio, vivo e lavoro a Roma. Sono laureata in <strong>Psicologia clinica e di comunità</strong> e iscritta dal 2008 all'Ordine degli Psicologi del Lazio n. 16130.
           </p>
           <p>
-            Ho approfondito il metodo del{" "}
-            <strong>Counseling psicologico</strong>, occupandomi di promozione
-            della salute e del benessere psicofisico, e mi sono formata
-            successivamente in{" "}
-            <strong>
-              Psicoterapia cognitivo-comportamentale, ad indirizzo Post
-              razionalista
-            </strong>
-            .
+            Ho approfondito il metodo del <strong>Counseling psicologico</strong>, occupandomi di promozione della salute e del benessere psicofisico, e mi sono formata successivamente in <strong>Psicoterapia cognitivo-comportamentale, ad indirizzo Post razionalista</strong>.
           </p>
           <p>
-            Dal 2008 collaboro con istituti scolastici attraverso progetti per
-            la{" "}
-            <strong>
-              prevenzione del disagio scolastico e dei comportamenti a rischio
-              in età evolutiva
-            </strong>
-            .
+            Dal 2008 collaboro con istituti scolastici attraverso progetti per la <strong>prevenzione del disagio scolastico e dei comportamenti a rischio in età evolutiva</strong>.
           </p>
           <p>
-            Svolgo <strong>attività clinica</strong>, occupandomi principalmente
-            di disturbi d'ansia e dell'umore, disagio esistenziale, difficoltà
-            relazionali, lavorative e di coppia, negli adulti e negli
-            adolescenti.
+            Svolgo <strong>attività clinica</strong>, occupandomi principalmente di disturbi d'ansia e dell'umore, disagio esistenziale, difficoltà relazionali, lavorative e di coppia, negli adulti e negli adolescenti.
           </p>
         </div>
 
+        <!-- Tolto lo style, aggiunto bg-sage -->
         <a
           href="#contatti"
-          class="btn-press mt-8 inline-flex self-start font-ui font-medium px-7 py-3 rounded-full text-white text-sm items-center gap-2 transition-all duration-200 hover:opacity-90"
-          style={{ backgroundColor: "var(--color-sage)" }}
+          class="btn-press mt-8 inline-flex self-start font-ui font-medium px-7 py-3 rounded-full text-white text-sm items-center gap-2 transition-all duration-200 hover:opacity-90 bg-sage"
         >
           Contattami
           <ArrowRight size={15} />

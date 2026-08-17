@@ -1,38 +1,39 @@
 @import "tailwindcss";
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-@layer components {
-  /* Puoi chiamarla .container per ripristinare la vecchia abitudine, 
-     oppure .wrapper per evitare conflitti logici */
-  .container {
-    @apply w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-}
-
-:root {
+/* 1. CONFIGURA IL TEMA DI TAILWIND V4 */
+/* Mettendo qui le tue variabili, Tailwind crea in automatico tutte le classi */
+@theme {
+  /* Font */
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Lato", system-ui, sans-serif;
   --font-ui: "DM Sans", system-ui, sans-serif;
 
-  --color-sage: oklch(0.62 0.08 145);
-  --color-sage-light: oklch(0.92 0.04 145);
-  --color-sage-dark: oklch(0.38 0.09 145);
+
+  --color-sage: oklch(0.62 0.08 145); 
+  --color-sage-light: oklch(0.92 0.04 145); 
+  --color-sage-dark: oklch(0.38 0.09 145); 
+
   --color-gold: oklch(0.72 0.12 75);
   --color-gold-dark: oklch(0.55 0.14 75);
   --color-slate-deep: oklch(0.22 0.02 240);
   --color-cream: oklch(0.98 0.01 85);
   --color-warm-white: oklch(0.99 0.005 85);
 
-  --background: oklch(0.985 0.005 85);
-  --foreground: oklch(0.22 0.02 240);
-  --border: oklch(0.9 0.01 85);
-  --input: oklch(0.93 0.008 85);
-  --ring: oklch(0.62 0.08 145);
+  /* Colori di sistema */
+  --color-background: oklch(0.985 0.005 85);
+  --color-foreground: oklch(0.22 0.02 240);
+  --color-muted-foreground: oklch(0.45 0.02 240); /* AGGIUNGI QUESTA RIGA */
+  --color-border: oklch(0.9 0.01 85);
+  --color-input: oklch(0.93 0.008 85);
+  --color-ring: oklch(0.62 0.08 145);
 
+  /* Radius */
   --radius: 0.5rem;
+}
+
+/* 2. STILI DI BASE HTML */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -41,8 +42,8 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,50 +55,23 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.01em;
 }
 
-/* 2. LA RETE DI SICUREZZA PER IL CONTAINER (Sintassi corretta per v4) */
+/* 3. IL TUO CONTAINER CUSTOM */
+/* Rimosso il duplicato @layer components, questa è la sintassi esatta per v4 */
 @utility container {
   margin-inline: auto;
-  max-width: var(--breakpoint-2xl); /* Blocca a 1536px per i monitor grandi */
+  max-width: var(--breakpoint-2xl);
   width: 100%;
-  padding-inline: 1rem; /* px-4 di base per mobile */
+  padding-inline: 1rem;
 }
 
-/* Usiamo il CSS nativo fuori da @utility per i breakpoint */
 @media (min-width: 640px) {
-  .container {
-    padding-inline: 1.5rem; /* sm:px-6 */
-  }
+  .container { padding-inline: 1.5rem; }
 }
 @media (min-width: 1024px) {
-  .container {
-    padding-inline: 2rem; /* lg:px-8 */
-  }
+  .container { padding-inline: 2rem; }
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-ui {
-  font-family: var(--font-ui);
-}
-
-.text-sage {
-  color: var(--color-sage);
-}
-
-.text-slate-deep {
-  color: var(--color-slate-deep);
-}
-
-.bg-sage {
-  background-color: var(--color-sage);
-}
-
-.bg-cream {
-  background-color: var(--color-cream);
-}
-
+/* 4. UTILITY EXTRA CHE TAILWIND NON PUÒ GENERARE DA SOLO */
 .section-divider {
   display: block;
   width: 3rem;

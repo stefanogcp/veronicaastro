@@ -1,20 +1,7 @@
 ---
-import {
-  Brain,
-  Heart,
-  Sparkles,
-  Phone,
-  Mail,
-  MapPin,
-  Menu,
-  X,
-  ChevronDown,
-  ArrowRight,
-  Quote,
-} from "@lucide/astro";
+import { Brain, Heart, Sparkles } from "@lucide/astro";
 
 const SERVICE_CONSULTATION = "/images/service.webp";
-
 const SERVICE_WELLNESS = "/images/wellness.webp";
 
 const services = [
@@ -48,23 +35,13 @@ const services = [
 ];
 ---
 
-<section
-  id="servizi"
-  class="py-20 md:py-32"
-  style={{ backgroundColor: "var(--color-cream)" }}
->
+<section id="servizi" class="py-20 md:py-32 bg-cream">
   <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="fade-up mb-14 md:mb-20">
-      <span
-        class="font-ui text-xs tracking-widest uppercase mb-4 block"
-        style={{ color: "var(--color-sage)" }}
-      >
+      <span class="font-ui text-xs tracking-widest uppercase mb-4 block text-sage">
         I miei servizi
       </span>
-      <h2
-        class="font-display text-4xl md:text-5xl leading-tight max-w-xl"
-        style={{ color: "var(--color-slate-deep)", fontWeight: 300 }}
-      >
+      <h2 class="font-display text-4xl md:text-5xl leading-tight max-w-xl text-slate-deep font-light">
         Servizi per la salute e il <em class="italic">benessere psicofisico</em>
       </h2>
       <span class="section-divider"></span>
@@ -76,11 +53,7 @@ const services = [
           const Icon = s.icon;
           return (
             <div
-              class="fade-up group bg-white rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(122,158,126,0.18)] hover:border-[var(--color-sage)]"
-              style={{
-                borderColor: "var(--color-border)",
-                boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
-              }}
+              class="fade-up group bg-white rounded-2xl overflow-hidden border border-border shadow-[0_1px_4px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(122,158,126,0.18)] hover:border-sage"
               data-delay={i * 100}
             >
               {s.image ? (
@@ -92,13 +65,10 @@ const services = [
                   />
                 </div>
               ) : (
-                <div
-                  class="h-48 flex items-center justify-center"
-                  style={{ backgroundColor: "var(--color-sage-light)" }}
-                >
+                <div class="h-48 flex items-center justify-center bg-sage-light">
                   <Icon
                     size={56}
-                    style={{ color: "var(--color-sage-dark)" }}
+                    class="text-sage-dark"
                     stroke-width={1}
                   />
                 </div>
@@ -106,52 +76,31 @@ const services = [
 
               <div class="p-6">
                 <div class="flex items-center gap-3 mb-3">
-                  <div
-                    class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: "var(--color-sage-light)" }}
-                  >
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-sage-light">
                     <Icon
                       size={16}
-                      style={{ color: "var(--color-sage-dark)" }}
+                      class="text-sage-dark"
                     />
                   </div>
 
                   <div>
-                    <h3
-                      class="font-display text-xl leading-tight"
-                      style={{
-                        color: "var(--color-slate-deep)",
-                        fontWeight: 500,
-                      }}
-                    >
+                    <h3 class="font-display text-xl leading-tight text-slate-deep font-medium">
                       {s.title}
                     </h3>
                   </div>
                 </div>
 
-                <p
-                  class="font-ui text-xs tracking-widest uppercase mb-3"
-                  style={{ color: "var(--color-sage)" }}
-                >
+                <p class="font-ui text-xs tracking-widest uppercase mb-3 text-sage">
                   {s.subtitle}
                 </p>
 
-                <p
-                  class="font-body text-sm leading-relaxed mb-4"
-                  style={{ color: "var(--color-muted-foreground)" }}
-                >
+                <p class="font-body text-sm leading-relaxed mb-4 text-muted-foreground">
                   {s.description}
                 </p>
 
                 <div class="flex flex-wrap gap-2">
                   {s.tags.map((tag) => (
-                    <span
-                      class="font-ui text-xs px-3 py-1 rounded-full"
-                      style={{
-                        backgroundColor: "var(--color-sage-light)",
-                        color: "var(--color-sage-dark)",
-                      }}
-                    >
+                    <span class="font-ui text-xs px-3 py-1 rounded-full bg-sage-light text-sage-dark">
                       {tag}
                     </span>
                   ))}
