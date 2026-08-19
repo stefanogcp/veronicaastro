@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "@lucide/astro";
+---
+
+<BaseLayout title="Benessere Psicofisico | Dott.ssa Nome Cognome">
+  
+  <!-- HERO DEL SERVIZIO (sfondo crema) -->
+  <header class="bg-cream pt-24 pb-10 md:pt-28 md:pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      
+      <a href="/#servizi" class="inline-flex items-center gap-2 text-sage hover:text-sage-dark transition-colors mb-8 font-ui text-sm font-medium uppercase tracking-widest">
+        <ArrowLeft size={16} />
+        Torna ai servizi
+      </a>
+      
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-slate-deep font-light leading-tight mb-6 fade-up">
+        Benessere <em class="italic text-sage">Psicofisico</em>
+      </h1>
+      
+      <p class="font-body text-xl text-muted-foreground leading-relaxed max-w-2xl fade-up" data-delay="100">
+        Stress? No grazie. Un percorso per promuovere attivamente la salute e migliorare quegli aspetti della vita quotidiana che ostacolano il nostro “star bene”.
+      </p>
+    </div>
+  </header>
+
+  <!-- CONTENUTO PRINCIPALE (sfondo bianco) -->
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-3xl mx-auto font-body text-lg text-muted-foreground leading-relaxed space-y-12">
+      
+      <!-- Il testo introduttivo -->
+      <div class="space-y-6">
+        <p>
+          La ricerca di uno stato di benessere è un percorso personale, che richiede attenzione e impegno nel migliorare le proprie abitudini. Alcuni disagi fisici e difficoltà che comunemente incontriamo (tensioni muscolari, affaticamento, difficoltà nel controllare il peso corporeo, insonnia) possono essere legati al modo in cui affrontiamo situazioni fonte di stress, o a comportamenti che ci creano malessere ma che non riusciamo a modificare.
+        </p>
+        <p>
+          Molti, però, possono incontrare difficoltà ad attivarsi da soli per intraprendere questo percorso. In questi casi l'aiuto di uno Psicologo permette di agire positivamente sulla qualità della vita, potenziando le risorse psicologiche e acquisendo nuove strategie comportamentali per promuovere la salute e prevenire la cronicizzazione dello stress.
+        </p>
+      </div>
+      
+      <!-- Sezione: Psicologia del benessere -->
+      <div>
+        <h2 class="font-display text-3xl text-slate-deep mb-6 font-medium">Cos'è la Psicologia del benessere?</h2>
+        
+        <div class="space-y-6 mb-8">
+          <p>
+            L'obiettivo della Psicologia del benessere è quello di aiutare l’individuo a promuovere uno stato psichico di soddisfazione e realizzazione, sviluppando un atteggiamento di attenzione e di cura verso se stessi.
+          </p>
+          <p>
+            L'intervento, individuale o di gruppo, prevede l’ausilio di tecniche e metodi attraverso cui è possibile migliorare l'equilibrio psico-fisico e l'integrazione mente-corpo-emozioni:
+          </p>
+        </div>
+
+        <ul class="space-y-4 bg-cream/50 p-6 rounded-2xl border border-sage/20">
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium">Tecniche a mediazione corporea</strong></span>
+          </li>
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium">Tecniche immaginative e induttive</strong></span>
+          </li>
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium block mb-1">Tecniche di rilassamento:</strong> training autogeno, rilassamento muscolare progressivo di Jacobson, controllo della respirazione.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINALE (sfondo salvia chiaro) -->
+  <section class="py-16 md:py-20 bg-sage-light/30 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-display text-3xl text-slate-deep mb-6">Iniziamo un percorso insieme?</h2>
+      <p class="font-body text-xl text-muted-foreground mb-8">
+        Vuoi imparare a gestire lo stress e migliorare la tua qualità di vita? Contattami per un primo colloquio conoscitivo.
+      </p>
+      <a
+        href="/#contatti"
+        class="inline-flex items-center gap-2 justify-center px-8 py-4 rounded-full bg-sage text-white font-ui text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+      >
+        Richiedi un appuntamento
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

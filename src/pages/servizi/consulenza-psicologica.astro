@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "@lucide/astro";
+---
+
+<BaseLayout title="Consulenza Psicologica | Dott.ssa Nome Cognome">
+  
+  <!-- HERO DEL SERVIZIO (sfondo crema) -->
+  <header class="bg-cream pt-24 pb-10 md:pt-28 md:pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      
+      <a href="/#servizi" class="inline-flex items-center gap-2 text-sage hover:text-sage-dark transition-colors mb-8 font-ui text-sm font-medium uppercase tracking-widest">
+        <ArrowLeft size={16} />
+        Torna ai servizi
+      </a>
+      
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-slate-deep font-light leading-tight mb-6 fade-up">
+        Consulenza <em class="italic text-sage">Psicologica</em>
+      </h1>
+      
+      <p class="font-body text-xl text-muted-foreground leading-relaxed max-w-2xl fade-up" data-delay="100">
+        Uno strumento di aiuto professionale utile nell'affrontare momenti di difficoltà personale, promuovere il benessere psicofisico e migliorare la qualità della vita.
+      </p>
+    </div>
+  </header>
+
+  <!-- CONTENUTO PRINCIPALE (sfondo bianco) -->
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-3xl mx-auto font-body text-lg text-muted-foreground leading-relaxed space-y-12">
+      
+      <!-- Il testo parte diretto, senza il titolo ridondante -->
+      <div class="space-y-6">
+        <p>
+          Può essere mirata alla definizione e soluzione di problemi specifici, al superamento di momenti di crisi personale o alla valutazione e trattamento di disagi emotivi e relazionali.
+        </p>
+        <p>
+          In ogni caso, è un utile strumento non solo per affrontare e superare i “sintomi” del disagio, ma per dare senso a ciò che sembra estraneo e fuori controllo e trasformarlo in un’opportunità di crescita, sviluppando le proprie potenzialità personali per fronteggiare quelle condizioni di vita che determinano la necessità di adattarsi a situazioni nuove e/o impreviste (gravidanza, menopausa, lutto, perdita del lavoro, separazioni).
+        </p>
+      </div>
+      
+      <!-- Sezione: Quando chiederla -->
+      <div>
+        <h2 class="font-display text-3xl text-slate-deep mb-6 font-medium">Quando chiederla</h2>
+        
+        <ul class="space-y-6">
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium block mb-1">Affrontare cambiamenti legati alle fasi del ciclo di vita:</strong> gravidanza e parto, diventare genitori, pensione e menopausa, cambiamenti legati all'invecchiamento.</span>
+          </li>
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium block mb-1">Gestire eventi critici:</strong> separazioni, lutti, malattie croniche e invalidanti, incidenti, fallimento di progetti personali o professionali, licenziamenti.</span>
+          </li>
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium block mb-1">Promuovere la salute psico-fisica ad ogni età:</strong> sviluppare risorse psicologiche nella gestione delle malattie croniche e invalidanti, dei disturbi psicosomatici (cefalee, gestione del sonno, disturbi gastrointestinali, bruxismo, mal di schiena), e dell'alimentazione.</span>
+          </li>
+          <li class="flex items-start gap-4">
+            <CheckCircle2 class="text-sage mt-1 flex-shrink-0" size={24} stroke-width={1.5} />
+            <span><strong class="text-slate-deep font-medium block mb-1">Valutazione e trattamento di disturbi:</strong> ansia (disturbo di panico, fobia sociale, disturbo d'ansia generalizzato), disturbo post-traumatico da stress e dell'umore (depressione).</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINALE (sfondo salvia chiaro) -->
+  <section class="py-16 md:py-20 bg-sage-light/30 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-display text-3xl text-slate-deep mb-6">Come chiederla</h2>
+      <p class="font-body text-xl text-muted-foreground mb-8">
+        Pensi di aver bisogno di aiuto? Contattami per prendere un appuntamento o per avere maggiori informazioni.
+      </p>
+      <a
+        href="/#contatti"
+        class="inline-flex items-center gap-2 justify-center px-8 py-4 rounded-full bg-sage text-white font-ui text-sm font-medium tracking-wide transition-all duration-200 hover:opacity-90"
+      >
+        Richiedi un appuntamento
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
