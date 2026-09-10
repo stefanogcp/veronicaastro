@@ -24,8 +24,8 @@ const services = [
     image: SERVICE_WELLNESS,
     tags: ["Gestione stress", "Mindfulness", "Psicosomatica"],
     href: "/servizi/benessere-psicofisico",
-  },
-  {
+  } ,
+/*  {
     icon: Sparkles,
     title: "Programma AttivaMente",
     subtitle: "Allenamento cognitivo",
@@ -34,7 +34,7 @@ const services = [
     image: null,
     tags: ["Memoria", "Concentrazione", "Prevenzione"],
     href: "/servizi/attivamente",
-  },
+  }, */
 ];
 ---
 
@@ -54,7 +54,7 @@ const services = [
       <span class="section-divider"></span>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 gap-8">
       {
         services.map((s, i) => {
           const Icon = s.icon;
