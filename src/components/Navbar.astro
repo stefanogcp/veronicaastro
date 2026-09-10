@@ -21,7 +21,7 @@ const links = [
 
 <header
   id="site-header"
-  class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md transition-all duration-300"
 >
   <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between md:h-20">
     
@@ -169,15 +169,14 @@ const links = [
 
     // Gestione Scroll
     const onScroll = () => {
-      if (window.scrollY > 40) {
-        header?.classList.add("is-scrolled", "bg-white/95", "backdrop-blur-sm", "shadow-sm");
-        header?.classList.remove("bg-transparent");
-      } else {
-        header?.classList.remove("is-scrolled", "bg-white/95", "backdrop-blur-sm", "shadow-sm");
-        header?.classList.add("bg-transparent");
-      }
-    };
-
+  if (window.scrollY > 40) {
+    header?.classList.add("is-scrolled", "bg-white/95", "shadow-sm");
+    header?.classList.remove("bg-white/30", "backdrop-blur-md");
+  } else {
+    header?.classList.remove("is-scrolled", "bg-white/95", "shadow-sm");
+    header?.classList.add("bg-white/30", "backdrop-blur-md");
+  }
+};
     window.addEventListener("scroll", onScroll);
     onScroll();
 
@@ -225,6 +224,7 @@ const links = [
 </script>
 
 <style>
+
   .nav-cta {
     background-color: var(--color-sage, #7a9b84);
     color: white;
