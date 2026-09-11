@@ -4,15 +4,23 @@ import { Menu, X, ChevronDown } from "@lucide/astro";
 // Struttura dei link aggiornata per supportare il sottomenu e i percorsi assoluti
 const links = [
   { label: "Chi sono", href: "/#chi-sono" },
-  { label: "Approccio", href: "/#approccio" }, // Ora punta alla pagina dedicata
-  { 
-    label: "Servizi", 
+  { label: "Approccio", href: "/#approccio" },
+  {
+    label: "Servizi",
     href: "/#servizi",
-    // Se è presente subLinks, il componente genererà il menu a tendina
     subLinks: [
-      { label: "Consulenza Psicologica", href: "/servizi/consulenza-psicologica" },
-      { label: "Benessere Psicofisico", href: "/servizi/benessere-psicofisico" } /*,
-      { label: "Programma Attivamente", href: "/servizi/attivamente" } */
+      {
+        label: "Consulenza Psicologica",
+        href: "/servizi/consulenza-psicologica"
+      },
+      {
+        label: "Benessere Psicofisico",
+        href: "/servizi/benessere-psicofisico"
+      } /*,
+      {
+        label: "Programma Attivamente",
+        href: "/servizi/attivamente"
+      } */
     ]
   },
   { label: "Contatti", href: "/#contatti" },
@@ -23,51 +31,85 @@ const links = [
   id="site-header"
   class="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md transition-all duration-300"
 >
-  <div class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between md:h-20">
-    
-    <!-- Logo / Name -->
+  <div
+    class="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between md:h-20"
+  >
+
+    <!-- ======================================================
+         Logo / Name
+         ====================================================== -->
+
     <a href="/#top" class="flex flex-col leading-tight">
-      <span class="font-display text-xl font-medium md:text-2xl" style="color: var(--color-slate-deep);">
+      <span
+        class="font-display text-xl font-medium md:text-2xl"
+        style="color: var(--color-slate-deep);"
+      >
         Veronica Di Biagio
       </span>
-      <span class="font-ui text-xs uppercase tracking-widest" style="color: var(--color-sage);">
+
+      <span
+        class="font-ui text-xs uppercase tracking-widest"
+        style="color: var(--color-sage);"
+      >
         Psicologa · Psicoterapeuta
       </span>
     </a>
 
-    <!-- Desktop nav -->
+
+    <!-- ======================================================
+         Desktop nav
+         ====================================================== -->
+
     <nav class="hidden md:flex items-center gap-8">
       {
         links.map((l) => (
           l.subLinks ? (
-            // DROPDOWN DESKTOP (Hover)
+            // DROPDOWN DESKTOP
             <div class="relative group">
+
               <a
                 href={l.href}
                 class="flex items-center gap-1 font-ui text-sm font-medium transition-colors duration-200 hover:text-primary py-2"
                 style="color: var(--color-slate-deep);"
               >
                 {l.label}
-                <ChevronDown size={16} class="transition-transform duration-200 group-hover:-rotate-180" />
+
+                <ChevronDown
+                  size={16}
+                  class="transition-transform duration-200 group-hover:-rotate-180"
+                />
               </a>
-              
-              <!-- Sottomenu Desktop -->
-              <div class="absolute left-0 top-full mt-1 w-56 rounded-xl bg-white shadow-lg border border-gray-100 opacity-0 invisible translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+
+
+              <!-- ==================================================
+                   Sottomenu Desktop
+
+                   Il menu è attaccato alla navbar e ne costituisce
+                   visivamente la continuazione.
+                   ================================================== -->
+
+              <div
+                class="nav-dropdown absolute left-0 top-[calc(100%-1px)] w-56 rounded-b-xl border-x border-b opacity-0 invisible translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200"
+              >
                 <div class="py-2 flex flex-col">
+
                   {l.subLinks.map((sub) => (
                     <a
                       href={sub.href}
-                      class="px-5 py-2.5 font-ui text-sm font-medium hover:bg-gray-50 transition-colors"
-                      style="color: var(--color-slate-deep);"
+                      class="nav-dropdown-link px-5 py-2.5 font-ui text-sm font-medium transition-colors"
                     >
                       {sub.label}
                     </a>
                   ))}
+
                 </div>
               </div>
+
             </div>
           ) : (
+
             // LINK SEMPLICE DESKTOP
+
             <a
               href={l.href}
               class="font-ui text-sm font-medium transition-colors duration-200 hover:text-primary"
@@ -79,15 +121,23 @@ const links = [
         ))
       }
 
+
+      <!-- CTA Desktop -->
+
       <a
         href="/#contatti"
         class="nav-cta btn-press rounded-full px-5 py-2 font-ui text-sm font-medium transition-all duration-200"
       >
         Prenota un colloquio
       </a>
+
     </nav>
 
-    <!-- Mobile hamburger -->
+
+    <!-- ======================================================
+         Mobile hamburger
+         ====================================================== -->
+
     <button
       id="menu-toggle"
       class="p-2 md:hidden"
@@ -96,32 +146,59 @@ const links = [
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <Menu id="menu-icon-open" size={22} style="color: var(--color-slate-deep);" />
-      <X id="menu-icon-close" size={22} class="hidden" style="color: var(--color-slate-deep);" />
+      <Menu
+        id="menu-icon-open"
+        size={22}
+        style="color: var(--color-slate-deep);"
+      />
+
+      <X
+        id="menu-icon-close"
+        size={22}
+        class="hidden"
+        style="color: var(--color-slate-deep);"
+      />
     </button>
+
   </div>
 
-  <!-- Mobile menu -->
+
+  <!-- ========================================================
+       Mobile menu
+       ======================================================== -->
+
   <div
     id="mobile-menu"
-    class="hidden border-t border-gray-100 bg-white/98 px-6 py-6 backdrop-blur-sm md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
+    class="hidden px-6 py-6 md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
   >
     <div class="flex flex-col gap-4">
+
       {
         links.map((l) => (
           l.subLinks ? (
-            // DROPDOWN MOBILE (Click)
+
+            // DROPDOWN MOBILE
+
             <div class="flex flex-col">
+
               <button
                 class="mobile-dropdown-btn flex items-center justify-between w-full text-left font-ui text-base font-medium py-2"
                 style="color: var(--color-slate-deep);"
               >
                 {l.label}
-                <ChevronDown size={20} class="mobile-dropdown-icon transition-transform duration-200" />
+
+                <ChevronDown
+                  size={20}
+                  class="mobile-dropdown-icon transition-transform duration-200"
+                />
               </button>
-              
-              <!-- Sottomenu Mobile (Inizialmente nascosto) -->
-              <div class="mobile-dropdown-content hidden flex-col pl-4 mt-2 space-y-3 border-l-2 border-gray-100">
+
+
+              <!-- Sottomenu Mobile -->
+
+              <div
+                class="mobile-dropdown-content hidden flex-col pl-4 mt-2 space-y-3 border-l-2 border-gray-100"
+              >
                 {l.subLinks.map((sub) => (
                   <a
                     href={sub.href}
@@ -132,9 +209,13 @@ const links = [
                   </a>
                 ))}
               </div>
+
             </div>
+
           ) : (
+
             // LINK SEMPLICE MOBILE
+
             <a
               href={l.href}
               class="font-ui text-base font-medium text-left py-2"
@@ -146,6 +227,9 @@ const links = [
         ))
       }
 
+
+      <!-- CTA Mobile -->
+
       <div class="mt-4 pt-4 border-t border-gray-100">
         <a
           href="/#contatti"
@@ -154,12 +238,18 @@ const links = [
           Prenota un colloquio
         </a>
       </div>
+
     </div>
   </div>
+
 </header>
 
+
 <script>
-  // Script ottimizzato per essere eseguito in Astro Client-Side
+  // ==========================================================
+  // Setup Header
+  // ==========================================================
+
   const setupHeader = () => {
     const header = document.querySelector("#site-header");
     const toggle = document.querySelector("#menu-toggle");
@@ -167,63 +257,140 @@ const links = [
     const iconOpen = document.querySelector("#menu-icon-open");
     const iconClose = document.querySelector("#menu-icon-close");
 
+
+    // ========================================================
     // Gestione Scroll
+    // ========================================================
+
     const onScroll = () => {
-  if (window.scrollY > 40) {
-    header?.classList.add("is-scrolled", "bg-white/95", "shadow-sm");
-    header?.classList.remove("bg-white/30", "backdrop-blur-md");
-  } else {
-    header?.classList.remove("is-scrolled", "bg-white/95", "shadow-sm");
-    header?.classList.add("bg-white/30", "backdrop-blur-md");
-  }
-};
+      if (window.scrollY > 40) {
+
+        header?.classList.add(
+          "is-scrolled",
+          "bg-white/95",
+          "shadow-sm"
+        );
+
+        header?.classList.remove(
+          "bg-white/30",
+          "backdrop-blur-md"
+        );
+
+      } else {
+
+        header?.classList.remove(
+          "is-scrolled",
+          "bg-white/95",
+          "shadow-sm"
+        );
+
+        header?.classList.add(
+          "bg-white/30",
+          "backdrop-blur-md"
+        );
+      }
+    };
+
+
     window.addEventListener("scroll", onScroll);
     onScroll();
 
-    // Gestione Toggle Menu Mobile Principale
+
+    // ========================================================
+    // Toggle Menu Mobile Principale
+    // ========================================================
+
     toggle?.addEventListener("click", () => {
-      const isOpen = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!isOpen));
+
+      const isOpen =
+        toggle.getAttribute("aria-expanded") === "true";
+
+      toggle.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
+
       mobileMenu?.classList.toggle("hidden");
+
       iconOpen?.classList.toggle("hidden");
       iconClose?.classList.toggle("hidden");
+
     });
 
-    // Gestione Accordion Servizi (Mobile)
-    const mobileDropdownBtns = document.querySelectorAll(".mobile-dropdown-btn");
-    
-    mobileDropdownBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
+
+    // ========================================================
+    // Accordion Servizi Mobile
+    // ========================================================
+
+    const mobileDropdownBtns =
+      document.querySelectorAll(".mobile-dropdown-btn");
+
+    mobileDropdownBtns.forEach((btn) => {
+
+      btn.addEventListener("click", () => {
+
         const content = btn.nextElementSibling;
-        const icon = btn.querySelector('.mobile-dropdown-icon');
-        
+
+        const icon = btn.querySelector(
+          ".mobile-dropdown-icon"
+        );
+
         if (content && icon) {
+
           content.classList.toggle("hidden");
           content.classList.toggle("flex");
+
           icon.classList.toggle("-rotate-180");
         }
+
       });
+
     });
 
-    // Chiusura del menu mobile quando si clicca un link (Migliora la UX)
-    const mobileLinks = mobileMenu?.querySelectorAll('a');
-    mobileLinks?.forEach(link => {
-      link.addEventListener('click', () => {
-        if (!mobileMenu.classList.contains('hidden')) {
-          toggle?.click(); // Simula il click sul pulsante di chiusura
+
+    // ========================================================
+    // Chiusura menu mobile quando si clicca un link
+    // ========================================================
+
+    const mobileLinks =
+      mobileMenu?.querySelectorAll("a");
+
+    mobileLinks?.forEach((link) => {
+
+      link.addEventListener("click", () => {
+
+        if (!mobileMenu.classList.contains("hidden")) {
+          toggle?.click();
         }
+
       });
+
     });
+
   };
 
+
+  // ==========================================================
   // Esegui setup all'avvio
+  // ==========================================================
+
   setupHeader();
-  
-  // Se usi le ViewTransitions di Astro in futuro, ri-esegui lo script al cambio pagina
-  document.addEventListener('astro:after-swap', setupHeader);
+
+
+  // Supporto Astro ViewTransitions
+
+  document.addEventListener(
+    "astro:after-swap",
+    setupHeader
+  );
 </script>
 
+
 <style>
+
+  /* ==========================================================
+     CTA
+     ========================================================== */
 
   .nav-cta {
     background-color: var(--color-sage, #7a9b84);
@@ -241,4 +408,157 @@ const links = [
     background-color: var(--color-sage, #7a9b84);
     color: white;
   }
+
+
+  /* ==========================================================
+     DROPDOWN DESKTOP
+     ========================================================== */
+
+  /*
+   * Stato normale:
+   *
+   * stesso colore traslucido della navbar.
+   * Nessun backdrop-blur indipendente.
+   */
+
+  #site-header .nav-dropdown {
+    background-color: rgba(255, 255, 255, 0.30);
+
+    border-color: rgba(255, 255, 255, 0.35);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+
+
+  /*
+   * Stato scrolled:
+   *
+   * esattamente lo stesso bianco della navbar.
+   */
+
+  #site-header.is-scrolled .nav-dropdown {
+    background-color: rgba(255, 255, 255, 0.95);
+
+    border-color: #f1f5f9;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+
+  /* ==========================================================
+     LINK DROPDOWN DESKTOP
+     ========================================================== */
+
+  #site-header .nav-dropdown-link {
+    color: var(--color-slate-deep);
+  }
+
+  #site-header .nav-dropdown-link:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+  }
+
+  #site-header.is-scrolled .nav-dropdown-link:hover {
+    background-color: #f8fafc;
+  }
+
+
+  /* ==========================================================
+     PONTE NAVBAR → DROPDOWN DESKTOP
+     ========================================================== */
+
+  /*
+   * Elimina anche la minima linea visiva tra barra e menu.
+   */
+
+  #site-header .nav-dropdown::before {
+    content: "";
+
+    position: absolute;
+
+    left: -1px;
+    right: -1px;
+
+    top: -1px;
+
+    height: 2px;
+
+    background-color: rgba(255, 255, 255, 0.30);
+  }
+
+  #site-header.is-scrolled .nav-dropdown::before {
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+
+  /* ==========================================================
+     MOBILE MENU
+     ========================================================== */
+
+  /*
+   * Il menu mobile è una continuazione della navbar.
+   *
+   * Non ha un backdrop-blur indipendente e usa lo stesso
+   * livello di trasparenza della barra.
+   */
+
+  #site-header #mobile-menu {
+    background-color: rgba(255, 255, 255, 0.30);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+
+  /*
+   * Quando la navbar diventa bianca allo scroll,
+   * anche il menu mobile diventa identico.
+   */
+
+  #site-header.is-scrolled #mobile-menu {
+    background-color: rgba(255, 255, 255, 0.95);
+
+    border-top-color: #f1f5f9;
+  }
+
+
+  /* ==========================================================
+     MOBILE SUBMENU
+     ========================================================== */
+
+  #site-header .mobile-dropdown-content {
+    border-left-color: rgba(148, 163, 184, 0.20);
+  }
+
+
+  /* ==========================================================
+     MOBILE CTA
+     ========================================================== */
+
+  #site-header #mobile-menu .nav-cta {
+    background-color: var(--color-sage, #7a9b84);
+
+    color: white;
+
+    border: 1px solid var(--color-sage, #7a9b84);
+  }
+
+  #site-header.is-scrolled #mobile-menu .nav-cta {
+    background-color: transparent;
+
+    color: var(--color-sage, #7a9b84);
+
+    border: 1px solid var(--color-sage, #7a9b84);
+  }
+
+  #site-header.is-scrolled #mobile-menu .nav-cta:hover {
+    background-color: var(--color-sage, #7a9b84);
+
+    color: white;
+  }
+
 </style>
